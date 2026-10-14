@@ -6,30 +6,22 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             BookShelfView()
-                .tabItem {
-                    Label("书架", systemImage: "books.vertical")
-                }
+                .tabItem { Label("书架", systemImage: "books.vertical.fill") }
                 .tag(0)
 
             BookSearchView()
-                .tabItem {
-                    Label("搜索", systemImage: "magnifyingglass")
-                }
+                .tabItem { Label("搜索", systemImage: "magnifyingglass") }
                 .tag(1)
 
             BookSourceManagerView()
-                .tabItem {
-                    Label("书源", systemImage: "square.stack.3d.up")
-                }
+                .tabItem { Label("书源", systemImage: "square.stack.3d.up.fill") }
                 .tag(2)
 
             SettingsView()
-                .tabItem {
-                    Label("我的", systemImage: "person.crop.circle")
-                }
+                .tabItem { Label("我的", systemImage: "person.crop.circle.fill") }
                 .tag(3)
         }
-        .accentColor(.blue)
+        .tint(.blue)
     }
 }
 
