@@ -22,8 +22,8 @@ struct BookCoverView: View {
                     .lineLimit(3)
                     .padding(.horizontal, 6)
 
-                if let author = book.author, !author.isEmpty {
-                    Text(author)
+                if !book.author.isEmpty {
+                    Text(book.author)
                         .font(.system(size: 9))
                         .foregroundColor(.white.opacity(0.8))
                         .lineLimit(1)
