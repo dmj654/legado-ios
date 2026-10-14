@@ -1,153 +1,212 @@
 import SwiftUI
 
 struct BookSearchView: View {
-    @State private var keyword = ""
-    @State private var isSearching = false
-    @State private var results: [SearchResult] = []
-    @State private var searchHistory: [String] = []
+    @StateObject private var viewModel = SearchViewModel()
+    @State private var showDetail = false
+    @State private var selectedResult: SearchResultItem? = nil
 
     var body: some View {
         NavigationView {
-            VStack {
-                SearchBar(text: $keyword, onSearch: performSearch)
-                    .padding(.horizontal)
+            VStack(spacing: 0) {
+                SearchBar(text: $viewModel.keyword, placeholder: "搜索书名、作者", onSearch: {
+                    viewModel.search(keyword: viewModel.keyword)
+                })
+                .padding(.horizontal)
+                .padding(.vertical, 8)
 
-                if isSearching {
+                if viewModel.isSearching {
                     ProgressView("正在搜索...")
                         .padding()
-                } else if !results.isEmpty {
-                    List(results) { result in
-                        SearchResultRow(result: result)
-                    }
-                    .listStyle(.plain)
-                } else if !searchHistory.isEmpty {
+                    Spacer()
+                } else if let error = viewModel.errorMessage, viewModel.results.isEmpty {
+                    EmptyStateView(icon: "exclamationmark.triangle", title: "搜索失败", message: error)
+                    Spacer()
+                } else if !viewModel.results.isEmpty {
                     List {
-                        Section("搜索历史") {
-                            ForEach(searchHistory, id: \.self) { history in
-                                Button(action: {
-                                    keyword = history
-                                    performSearch()
-                                }) {
-                                    HStack {
-                                        Image(systemName: "clock.arrow.circlepath")
-                                            .foregroundColor(.gray)
-                                        Text(history)
-                                    }
-                                }
+                        ForEach(viewModel.results) { result in
+                            searchResultRow(result)
+                        }
+                        if viewModel.hasMore && !viewModel.results.isEmpty {
+                            HStack {
+                                Spacer()
+                                ProgressView()
+                                    .onAppear { viewModel.loadMore() }
+                                Spacer()
                             }
+                            .listRowSeparator(.hidden)
                         }
                     }
                     .listStyle(.plain)
                 } else {
-                    Spacer()
-                    VStack(spacing: 12) {
-                        Image(systemName: "magnifyingglass")
-                            .font(.system(size: 50))
-                            .foregroundColor(.gray)
-                        Text("输入书名开始搜索")
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
+                    searchHistoryView
                 }
             }
             .navigationTitle("搜索")
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet(item: $selectedResult) { result in
+                SearchResultDetailView(result: result)
+            }
+            .onAppear { viewModel.loadHistory() }
         }
+        .navigationViewStyle(.stack)
     }
 
-    private func performSearch() {
-        guard !keyword.trimmingCharacters(in: .whitespaces).isEmpty else { return }
-        isSearching = true
-        searchHistory.insert(keyword, at: 0)
-        if searchHistory.count > 20 {
-            searchHistory.removeLast()
+    private var searchHistoryView: some View {
+        List {
+            if !viewModel.searchHistory.isEmpty {
+                Section {
+                    ForEach(viewModel.searchHistory) { history in
+                        Button(action: {
+                            viewModel.keyword = history.keyword
+                            viewModel.search(keyword: history.keyword)
+                        }) {
+                            HStack {
+                                Image(systemName: "clock.arrow.circlepath")
+                                    .foregroundColor(.gray)
+                                Text(history.keyword)
+                                    .foregroundColor(.primary)
+                                Spacer()
+                            }
+                        }
+                    }
+                } header: {
+                    HStack {
+                        Text("搜索历史")
+                        Spacer()
+                        Button("清空") { viewModel.clearHistory() }
+                            .font(.caption)
+                    }
+                }
+            }
+
+            Section {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(viewModel.hotKeywords, id: \.self) { keyword in
+                            Button(action: {
+                                viewModel.keyword = keyword
+                                viewModel.search(keyword: keyword)
+                            }) {
+                                Text(keyword)
+                                    .font(.subheadline)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
+                                    .background(Color.orange.opacity(0.1))
+                                    .foregroundColor(.orange)
+                                    .cornerRadius(14)
+                            }
+                        }
+                    }
+                }
+            } header: {
+                Text("热门搜索")
+            }
         }
-
-        // 模拟搜索结果（实际调用 KMP shared 模块）
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            results = [
-                SearchResult(title: "\(keyword)（示例结果1）", author: "作者A", source: "示例书源", lastChapter: "第100章"),
-                SearchResult(title: "\(keyword)（示例结果2）", author: "作者B", source: "示例书源2", lastChapter: "第50章"),
-                SearchResult(title: "\(keyword)（示例结果3）", author: "作者C", source: "示例书源3", lastChapter: "第200章")
-            ]
-            isSearching = false
-        }
-    }
-}
-
-struct SearchBar: UIViewRepresentable {
-    @Binding var text: String
-    var onSearch: () -> Void
-
-    func makeUIView(context: Context) -> UISearchBar {
-        let searchBar = UISearchBar(frame: .zero)
-        searchBar.delegate = context.coordinator
-        searchBar.placeholder = "搜索书名"
-        searchBar.searchBarStyle = .minimal
-        return searchBar
+        .listStyle(.insetGrouped)
     }
 
-    func updateUIView(_ uiView: UISearchBar, context: Context) {
-        uiView.text = text
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(text: $text, onSearch: onSearch)
-    }
-
-    class Coordinator: NSObject, UISearchBarDelegate {
-        @Binding var text: String
-        var onSearch: () -> Void
-
-        init(text: Binding<String>, onSearch: @escaping () -> Void) {
-            _text = text
-            self.onSearch = onSearch
-        }
-
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            text = searchText
-        }
-
-        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            searchBar.resignFirstResponder()
-            onSearch()
-        }
-    }
-}
-
-struct SearchResult: Identifiable {
-    let id = UUID()
-    let title: String
-    let author: String
-    let source: String
-    let lastChapter: String
-}
-
-struct SearchResultRow: View {
-    let result: SearchResult
-
-    var body: some View {
+    private func searchResultRow(_ result: SearchResultItem) -> some View {
         HStack(spacing: 12) {
             RoundedRectangle(cornerRadius: 6)
-                .fill(LinearGradient(colors: [.blue.opacity(0.4), .purple.opacity(0.4)], startPoint: .top, endPoint: .bottom))
+                .fill(LinearGradient(colors: [.blue.opacity(0.5), .purple.opacity(0.5)], startPoint: .top, endPoint: .bottom))
                 .frame(width: 60, height: 80)
+                .overlay(
+                    Text(result.title.prefix(2))
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.white)
+                )
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(result.title)
                     .font(.headline)
                     .lineLimit(1)
-                Text(result.author)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                Text(result.lastChapter)
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                Text(result.source)
+                if !result.author.isEmpty {
+                    Text(result.author)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                if let last = result.lastChapter, !last.isEmpty {
+                    Text(last)
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .lineLimit(1)
+                }
+                Text(result.sourceName)
                     .font(.caption2)
                     .foregroundColor(.blue)
             }
             Spacer()
         }
         .padding(.vertical, 4)
+        .contentShape(Rectangle())
+        .onTapGesture { selectedResult = result }
+    }
+}
+
+struct SearchResultDetailView: View {
+    let result: SearchResultItem
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 16) {
+                    HStack(spacing: 16) {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(LinearGradient(colors: [.blue.opacity(0.5), .purple.opacity(0.5)], startPoint: .top, endPoint: .bottom))
+                            .frame(width: 100, height: 140)
+
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(result.title)
+                                .font(.title2)
+                                .fontWeight(.bold)
+                            Text(result.author)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                            Text(result.sourceName)
+                                .font(.caption)
+                                .foregroundColor(.blue)
+                        }
+                        Spacer()
+                    }
+                    .padding()
+
+                    if let intro = result.intro, !intro.isEmpty {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("简介")
+                                .font(.headline)
+                            Text(intro)
+                                .font(.body)
+                                .foregroundColor(.secondary)
+                        }
+                        .padding(.horizontal)
+                    }
+
+                    Button(action: {
+                        let vm = SearchViewModel()
+                        vm.addToShelf(result: result)
+                        dismiss()
+                    }) {
+                        Text("加入书架")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(12)
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 16)
+                }
+            }
+            .navigationTitle("书籍详情")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("关闭") { dismiss() }
+                }
+            }
+        }
     }
 }
 
