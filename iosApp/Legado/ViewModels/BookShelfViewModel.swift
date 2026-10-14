@@ -27,7 +27,7 @@ final class BookShelfViewModel: ObservableObject {
         if !searchText.isEmpty {
             result = result.filter {
                 $0.name.localizedCaseInsensitiveContains(searchText) ||
-                ($0.author?.localizedCaseInsensitiveContains(searchText) ?? false)
+                ($0.author.localizedCaseInsensitiveContains(searchText))
             }
         }
         switch sortBy {
