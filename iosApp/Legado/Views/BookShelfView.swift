@@ -115,8 +115,8 @@ struct BookShelfView: View {
             Text(book.name)
                 .font(.system(size: 12, weight: .medium))
                 .lineLimit(1)
-            if let author = book.author, !author.isEmpty {
-                Text(author)
+            if !book.author.isEmpty {
+                Text(book.author)
                     .font(.system(size: 10))
                     .foregroundColor(.secondary)
                     .lineLimit(1)
@@ -131,8 +131,8 @@ struct BookShelfView: View {
                 Text(book.name)
                     .font(.headline)
                     .lineLimit(1)
-                if let author = book.author, !author.isEmpty {
-                    Text(author)
+                if !book.author.isEmpty {
+                    Text(book.author)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .lineLimit(1)
