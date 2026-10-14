@@ -1,25 +1,17 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct LegadoApp: App {
-    @StateObject private var appState = AppState()
+    @StateObject private var settings = AppSettings.shared
+    private let storage = StorageManager.shared
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(appState)
-                .onAppear {
-                    appState.initialize()
-                }
+                .environmentObject(settings)
+                .environment(\.modelContext, storage.context)
+                .preferredColorScheme(settings.effectiveColorScheme)
         }
-    }
-}
-
-class AppState: ObservableObject {
-    @Published var isInitialized = false
-
-    func initialize() {
-        // 初始化 KMP SDK
-        isInitialized = true
     }
 }
