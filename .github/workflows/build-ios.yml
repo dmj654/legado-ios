@@ -17,32 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Cache Gradle
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-
-      - name: Build KMP Shared Framework (iOS)
-        run: |
-          cd legado-kmp
-          if [ -f "gradlew" ]; then
-            chmod +x gradlew
-            ./gradlew :shared:linkReleaseFrameworkIosArm64 --no-daemon || echo "KMP framework build skipped (may need more setup)"
-          else
-            echo "No gradlew found, skipping KMP build"
-          fi
-
       - name: Select Xcode
         run: |
           xcodebuild -version
@@ -50,7 +24,7 @@ jobs:
 
       - name: Build iOS App (Release, arm64)
         run: |
-          cd legado-kmp/iosApp
+          cd iosApp
           xcodebuild \
             -project Legado.xcodeproj \
             -scheme Legado \
@@ -66,24 +40,16 @@ jobs:
 
       - name: Create Unsigned IPA
         run: |
-          cd legado-kmp/iosApp
+          cd iosApp
           mkdir -p build/Payload
           cp -R build/Legado.xcarchive/Products/Applications/Legado.app build/Payload/
           cd build
           zip -qr Legado-unsigned.ipa Payload
           ls -lh Legado-unsigned.ipa
-          echo "IPA_PATH=$PWD/Legado-unsigned.ipa" >> $GITHUB_ENV
 
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Legado-unsigned-ipa
-          path: legado-kmp/iosApp/build/Legado-unsigned.ipa
+          path: iosApp/build/Legado-unsigned.ipa
           retention-days: 30
-
-      - name: Upload XCArchive (optional debug)
-        uses: actions/upload-artifact@v4
-        with:
-          name: Legado-xcarchive
-          path: legado-kmp/iosApp/build/Legado.xcarchive
-          retention-days: 7
