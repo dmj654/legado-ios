@@ -7,31 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A100000100000000000001 /* LegadoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000200000000000001 /* LegadoApp.swift */; };
-		A100000300000000000001 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000400000000000001 /* ContentView.swift */; };
-		A100000500000000000001 /* BookShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000600000000000001 /* BookShelfView.swift */; };
-		A100000700000000000001 /* BookSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000800000000000001 /* BookSearchView.swift */; };
-		A100000900000000000001 /* BookSourceManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000A00000000000001 /* BookSourceManagerView.swift */; };
-		A100000B00000000000001 /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000C00000000000001 /* ReaderView.swift */; };
-		A100000D00000000000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000E00000000000001 /* SettingsView.swift */; };
-		A100000F00000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A100001000000000000001 /* Assets.xcassets */; };
+		A100000100000000000001 /* LegadoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010100000000000001 /* LegadoApp.swift */; };
+		A100000200000000000001 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010200000000000001 /* BookModel.swift */; };
+		A100000300000000000001 /* ChapterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010300000000000001 /* ChapterModel.swift */; };
+		A100000400000000000001 /* BookSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010400000000000001 /* BookSourceModel.swift */; };
+		A100000500000000000001 /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010500000000000001 /* SearchHistory.swift */; };
+		A100000600000000000001 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010600000000000001 /* AppSettings.swift */; };
+		A100000700000000000001 /* BookShelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010700000000000001 /* BookShelfViewModel.swift */; };
+		A100000800000000000001 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010800000000000001 /* SearchViewModel.swift */; };
+		A100000900000000000001 /* ReaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010900000000000001 /* ReaderViewModel.swift */; };
+		A100000A00000000000001 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010A00000000000001 /* ContentView.swift */; };
+		A100000B00000000000001 /* BookShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010B00000000000001 /* BookShelfView.swift */; };
+		A100000C00000000000001 /* BookSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010C00000000000001 /* BookSearchView.swift */; };
+		A100000D00000000000001 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010D00000000000001 /* BookDetailView.swift */; };
+		A100000E00000000000001 /* ChapterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010E00000000000001 /* ChapterListView.swift */; };
+		A100000F00000000000001 /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100010F00000000000001 /* ReaderView.swift */; };
+		A100001000000000000001 /* BookSourceManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100011000000000000001 /* BookSourceManagerView.swift */; };
+		A100001100000000000001 /* BookSourceEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100011100000000000001 /* BookSourceEditView.swift */; };
+		A100001200000000000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100011200000000000001 /* SettingsView.swift */; };
+		A100001300000000000001 /* CommonComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100011300000000000001 /* CommonComponents.swift */; };
+		A100001400000000000001 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100011400000000000001 /* StorageManager.swift */; };
+		A100001500000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A100011500000000000001 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A100000200000000000001 /* LegadoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegadoApp.swift; sourceTree = "<group>"; };
-		A100000400000000000001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A100000600000000000001 /* BookShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfView.swift; sourceTree = "<group>"; };
-		A100000800000000000001 /* BookSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchView.swift; sourceTree = "<group>"; };
-		A100000A00000000000001 /* BookSourceManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSourceManagerView.swift; sourceTree = "<group>"; };
-		A100000C00000000000001 /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
-		A100000E00000000000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A100001000000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A100001100000000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A100001200000000000001 /* Legado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Legado.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A100010100000000000001 /* LegadoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegadoApp.swift; sourceTree = "<group>"; };
+		A100010200000000000001 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		A100010300000000000001 /* ChapterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterModel.swift; sourceTree = "<group>"; };
+		A100010400000000000001 /* BookSourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSourceModel.swift; sourceTree = "<group>"; };
+		A100010500000000000001 /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
+		A100010600000000000001 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		A100010700000000000001 /* BookShelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfViewModel.swift; sourceTree = "<group>"; };
+		A100010800000000000001 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		A100010900000000000001 /* ReaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderViewModel.swift; sourceTree = "<group>"; };
+		A100010A00000000000001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A100010B00000000000001 /* BookShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfView.swift; sourceTree = "<group>"; };
+		A100010C00000000000001 /* BookSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchView.swift; sourceTree = "<group>"; };
+		A100010D00000000000001 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		A100010E00000000000001 /* ChapterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterListView.swift; sourceTree = "<group>"; };
+		A100010F00000000000001 /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
+		A100011000000000000001 /* BookSourceManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSourceManagerView.swift; sourceTree = "<group>"; };
+		A100011100000000000001 /* BookSourceEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSourceEditView.swift; sourceTree = "<group>"; };
+		A100011200000000000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A100011300000000000001 /* CommonComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonComponents.swift; sourceTree = "<group>"; };
+		A100011400000000000001 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		A100011500000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A100011600000000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A100011700000000000001 /* Legado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Legado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A100001300000000000001 /* Frameworks */ = {
+		A100020100000000000001 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,50 +67,95 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A100001400000000000001 = {
+		A100030100000000000001 = {
 			isa = PBXGroup;
 			children = (
-				A100001500000000000001 /* Legado */,
-				A100001600000000000001 /* Products */,
+				A100030200000000000001 /* Legado */,
+				A100030900000000000001 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A100001500000000000001 /* Legado */ = {
+		A100030200000000000001 /* Legado */ = {
 			isa = PBXGroup;
 			children = (
-				A100001700000000000001 /* App */,
-				A100001800000000000001 /* Views */,
-				A100001000000000000001 /* Assets.xcassets */,
-				A100001100000000000001 /* Info.plist */,
+				A100030300000000000001 /* App */,
+				A100030400000000000001 /* Models */,
+				A100030500000000000001 /* ViewModels */,
+				A100030600000000000001 /* Views */,
+				A100030800000000000001 /* Utils */,
+				A100011500000000000001 /* Assets.xcassets */,
+				A100011600000000000001 /* Info.plist */,
 			);
 			path = Legado;
 			sourceTree = "<group>";
 		};
-		A100001700000000000001 /* App */ = {
+		A100030300000000000001 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				A100000200000000000001 /* LegadoApp.swift */,
+				A100010100000000000001 /* LegadoApp.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
 		};
-		A100001800000000000001 /* Views */ = {
+		A100030400000000000001 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A100000400000000000001 /* ContentView.swift */,
-				A100000600000000000001 /* BookShelfView.swift */,
-				A100000800000000000001 /* BookSearchView.swift */,
-				A100000A00000000000001 /* BookSourceManagerView.swift */,
-				A100000C00000000000001 /* ReaderView.swift */,
-				A100000E00000000000001 /* SettingsView.swift */,
+				A100010200000000000001 /* BookModel.swift */,
+				A100010300000000000001 /* ChapterModel.swift */,
+				A100010400000000000001 /* BookSourceModel.swift */,
+				A100010500000000000001 /* SearchHistory.swift */,
+				A100010600000000000001 /* AppSettings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A100030500000000000001 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A100010700000000000001 /* BookShelfViewModel.swift */,
+				A100010800000000000001 /* SearchViewModel.swift */,
+				A100010900000000000001 /* ReaderViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A100030600000000000001 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A100010A00000000000001 /* ContentView.swift */,
+				A100010B00000000000001 /* BookShelfView.swift */,
+				A100010C00000000000001 /* BookSearchView.swift */,
+				A100010D00000000000001 /* BookDetailView.swift */,
+				A100010E00000000000001 /* ChapterListView.swift */,
+				A100010F00000000000001 /* ReaderView.swift */,
+				A100011000000000000001 /* BookSourceManagerView.swift */,
+				A100011100000000000001 /* BookSourceEditView.swift */,
+				A100011200000000000001 /* SettingsView.swift */,
+				A100030700000000000001 /* Components */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A100001600000000000001 /* Products */ = {
+		A100030700000000000001 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A100001200000000000001 /* Legado.app */,
+				A100011300000000000001 /* CommonComponents.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A100030800000000000001 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A100011400000000000001 /* StorageManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A100030900000000000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A100011700000000000001 /* Legado.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,13 +163,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A100001900000000000001 /* Legado */ = {
+		A100040100000000000001 /* Legado */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A100001D00000000000001 /* Build configuration list for PBXNativeTarget "Legado" */;
+			buildConfigurationList = A100070100000000000001 /* Build configuration list for PBXNativeTarget "Legado" */;
 			buildPhases = (
-				A100001A00000000000001 /* Sources */,
-				A100001300000000000001 /* Frameworks */,
-				A100001B00000000000001 /* Resources */,
+				A100050100000000000001 /* Sources */,
+				A100020100000000000001 /* Frameworks */,
+				A100050200000000000001 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -106,25 +177,25 @@
 			);
 			name = Legado;
 			productName = Legado;
-			productReference = A100001200000000000001 /* Legado.app */;
+			productReference = A100011700000000000001 /* Legado.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A100001C00000000000001 /* Project object */ = {
+		A100060100000000000001 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					A100001900000000000001 = {
+					A100040100000000000001 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = A100001E00000000000001 /* Build configuration list for PBXProject "Legado" */;
+			buildConfigurationList = A100070200000000000001 /* Build configuration list for PBXProject "Legado" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -132,55 +203,66 @@
 				en,
 				Base,
 			);
-			mainGroup = A100001400000000000001;
-			productRefGroup = A100001600000000000001 /* Products */;
+			mainGroup = A100030100000000000001;
+			productRefGroup = A100030900000000000001 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A100001900000000000001 /* Legado */,
+				A100040100000000000001 /* Legado */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A100001B00000000000001 /* Resources */ = {
+		A100050200000000000001 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A100000F00000000000001 /* Assets.xcassets in Resources */,
+				A100001500000000000001 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A100001A00000000000001 /* Sources */ = {
+		A100050100000000000001 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A100000100000000000001 /* LegadoApp.swift in Sources */,
-				A100000300000000000001 /* ContentView.swift in Sources */,
-				A100000500000000000001 /* BookShelfView.swift in Sources */,
-				A100000700000000000001 /* BookSearchView.swift in Sources */,
-				A100000900000000000001 /* BookSourceManagerView.swift in Sources */,
-				A100000B00000000000001 /* ReaderView.swift in Sources */,
-				A100000D00000000000001 /* SettingsView.swift in Sources */,
+				A100000200000000000001 /* BookModel.swift in Sources */,
+				A100000300000000000001 /* ChapterModel.swift in Sources */,
+				A100000400000000000001 /* BookSourceModel.swift in Sources */,
+				A100000500000000000001 /* SearchHistory.swift in Sources */,
+				A100000600000000000001 /* AppSettings.swift in Sources */,
+				A100000700000000000001 /* BookShelfViewModel.swift in Sources */,
+				A100000800000000000001 /* SearchViewModel.swift in Sources */,
+				A100000900000000000001 /* ReaderViewModel.swift in Sources */,
+				A100000A00000000000001 /* ContentView.swift in Sources */,
+				A100000B00000000000001 /* BookShelfView.swift in Sources */,
+				A100000C00000000000001 /* BookSearchView.swift in Sources */,
+				A100000D00000000000001 /* BookDetailView.swift in Sources */,
+				A100000E00000000000001 /* ChapterListView.swift in Sources */,
+				A100000F00000000000001 /* ReaderView.swift in Sources */,
+				A100001000000000000001 /* BookSourceManagerView.swift in Sources */,
+				A100001100000000000001 /* BookSourceEditView.swift in Sources */,
+				A100001200000000000001 /* SettingsView.swift in Sources */,
+				A100001300000000000001 /* CommonComponents.swift in Sources */,
+				A100001400000000000001 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A100001F00000000000001 /* Debug */ = {
+		A100080100000000000001 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -232,12 +314,11 @@
 			};
 			name = Debug;
 		};
-		A100002000000000000001 /* Release */ = {
+		A100080200000000000001 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -286,7 +367,7 @@
 			};
 			name = Release;
 		};
-		A100002100000000000001 /* Debug */ = {
+		A100080300000000000001 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -300,8 +381,6 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +394,7 @@
 			};
 			name = Debug;
 		};
-		A100002200000000000001 /* Release */ = {
+		A100080400000000000001 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -329,8 +408,6 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -347,25 +424,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A100001E00000000000001 /* Build configuration list for PBXProject "Legado" */ = {
+		A100070200000000000001 /* Build configuration list for PBXProject "Legado" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A100001F00000000000001 /* Debug */,
-				A100002000000000000001 /* Release */,
+				A100080100000000000001 /* Debug */,
+				A100080200000000000001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A100001D00000000000001 /* Build configuration list for PBXNativeTarget "Legado" */ = {
+		A100070100000000000001 /* Build configuration list for PBXNativeTarget "Legado" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A100002100000000000001 /* Debug */,
-				A100002200000000000001 /* Release */,
+				A100080300000000000001 /* Debug */,
+				A100080400000000000001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A100001C00000000000001 /* Project object */;
+	rootObject = A100060100000000000001 /* Project object */;
 }
