@@ -1,6 +1,7 @@
 import Foundation
 import SwiftData
 
+@MainActor
 final class StorageManager {
     static let shared = StorageManager()
 
